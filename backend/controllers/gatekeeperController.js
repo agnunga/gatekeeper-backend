@@ -12,11 +12,30 @@ const createGatekeeper = async (req, res) => {
 
 // Get all Gatekeepers
 const getGatekeepers = async (req, res) => {
+  //console.log(req);
   try {
-    const gatekeepers = await Gatekeeper.find();
-    res.status(200).json(gatekeepers);
+
+    if (!req.user) {
+      res.status(403)
+        .send({
+          message: "Invalid JWT token"
+        });
+    }
+    if (req.user.role == "admin") {
+
+      const gatekeepers = await Gatekeeper.find();
+      res.status(200).json(gatekeepers);
+
+    } else {
+      res.status(403)
+        .send({
+          message: "Unauthorised access"
+        });
+    }
+
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    //res.status(500).json({ msg: error.message });
+    console.log(error.message);
   }
 };
 

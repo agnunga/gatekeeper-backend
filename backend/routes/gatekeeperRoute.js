@@ -1,5 +1,5 @@
 const express = require("express");
-const Gatekeeper = require("../models/gatekeeperModel").default;
+verifyToken = require("../middleware/authJWT");
 const router = express.Router();
 const {
   createGatekeeper,
@@ -9,8 +9,7 @@ const {
   updateGatekeeper,
 } = require("../controllers/gatekeeperController");
 
-router.route("/").get(getGatekeepers).post(createGatekeeper);
+router.route("/").get(verifyToken, getGatekeepers).post(verifyToken, createGatekeeper);
 router.route("/:id").get(getGatekeeper).delete(deleteGatekeeper).put(updateGatekeeper).patch(updateGatekeeper);
 
 module.exports = router;
-  
