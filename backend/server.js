@@ -11,7 +11,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({ origin: ["http://localhost:3001", "http://localhost:3000"] }));
+app.use(cors({ origin: ["https://sfc-access-management.vercel.app/", "http://localhost:3000"] }));
 
 app.use("/api/gatekeepers", gateKeeperRoutes);
 app.use("/users", userRoutes);
