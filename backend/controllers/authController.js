@@ -3,9 +3,6 @@ var bcrypt = require("bcrypt");
 var User = require("../models/user");
 
 exports.signup = (req, res) => {
-    console.log("PASSWORD::::::::: ");
-    console.log(req.body);
-
   const user = new User({
     fullName: req.body.fullName,
     email: req.body.email,
@@ -23,7 +20,7 @@ exports.signup = (req, res) => {
     } else {
       res.status(200)
         .send({
-          message: "User Registered successfully"
+          message: "Registered!"
         })
     }
   });

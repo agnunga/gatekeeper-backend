@@ -1,5 +1,5 @@
 const express = require("express");
-verifyToken = require("../middleware/authJWT");
+const verifyToken = require("../middleware/authJWT");
 const router = express.Router();
 const {
   createGatekeeper,
