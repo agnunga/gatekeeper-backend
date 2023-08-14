@@ -35,7 +35,6 @@ const accessSchema = mongoose.Schema(
       type: Date,
       default: Date.now
     },
-  
     timeOut: {
       type: Date
     },
